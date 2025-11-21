@@ -85,3 +85,9 @@ AsyncStorage for local storage
 React Navigation (Stack & Bottom Tabs)
 
 Context API for state managementgit add README.md
+
+## 📱 Download APK
+
+You can install the latest Android build of the app using this link:
+
+[Download APK](https://expo.dev/accounts/kgopotsomangena/projects/NotesApp/builds/1321652a-da0f-4c9e-8b44-c907cabec404)

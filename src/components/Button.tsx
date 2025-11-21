@@ -14,7 +14,7 @@ export default function Button({ title, onPress, backgroundColor, textColor, sty
     <TouchableOpacity
       style={[styles.btn, { backgroundColor: backgroundColor || "#333" }, style]}
       onPress={onPress}
-      activeOpacity={0.7} // subtle feedback when pressed
+      activeOpacity={0.7} 
     >
       <Text style={[styles.text, { color: textColor || "#fff" }]}>{title}</Text>
     </TouchableOpacity>
