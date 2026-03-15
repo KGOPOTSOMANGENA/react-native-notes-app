@@ -59,10 +59,13 @@ export const NotesProvider = ({ children }: any) => {
   };
 
   const searchNotes = (term: string) => {
-    return notes.filter((n) =>
-      n.text.toLowerCase().includes(term.toLowerCase())
-    );
-  };
+  const lower = term.toLowerCase();
+  return notes.filter(
+    (n) =>
+      n.title?.toLowerCase().includes(lower) ||
+      n.text.toLowerCase().includes(lower)
+  );
+};
 
   const sortNotesByDate = (order: "asc" | "desc") => {
     return [...notes].sort((a, b) =>
