@@ -1,22 +1,21 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, GestureResponderEvent } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, GestureResponderEvent, ViewStyle } from "react-native";
 
 interface Props {
   title: string;
   onPress: (event: GestureResponderEvent) => void;
-  backgroundColor?: string; // optional custom color
-  textColor?: string;       // optional custom text color
-  style?: object;           // optional extra styles
+  variant?: "primary" | "danger" | "ghost";
+  style?: ViewStyle;
 }
 
-export default function Button({ title, onPress, backgroundColor, textColor, style }: Props) {
+export default function Button({ title, onPress, variant = "primary", style }: Props) {
   return (
     <TouchableOpacity
-      style={[styles.btn, { backgroundColor: backgroundColor || "#333" }, style]}
+      style={[styles.btn, styles[variant], style]}
       onPress={onPress}
-      activeOpacity={0.7} 
+      activeOpacity={0.8}
     >
-      <Text style={[styles.text, { color: textColor || "#fff" }]}>{title}</Text>
+      <Text style={[styles.text, variant === "ghost" && styles.ghostText]}>{title}</Text>
     </TouchableOpacity>
   );
 }
@@ -25,19 +24,27 @@ const styles = StyleSheet.create({
   btn: {
     paddingVertical: 14,
     paddingHorizontal: 20,
-    borderRadius: 10,
+    borderRadius: 12,
     alignItems: "center",
-    marginVertical: 8,
-    // Shadow for iOS
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    // Elevation for Android
-    elevation: 5,
+    marginVertical: 6,
+  },
+  primary: {
+    backgroundColor: "#1A1A1A",
+  },
+  danger: {
+    backgroundColor: "#FF3B30",
+  },
+  ghost: {
+    backgroundColor: "transparent",
+    borderWidth: 1.5,
+    borderColor: "#1A1A1A",
   },
   text: {
-    fontWeight: "bold",
-    fontSize: 16,
+    fontWeight: "700",
+    fontSize: 15,
+    color: "#FFFFFF",
+  },
+  ghostText: {
+    color: "#1A1A1A",
   },
 });
